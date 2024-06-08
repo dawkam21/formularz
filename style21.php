@@ -1,3 +1,14 @@
+<?php
+/*** set the content type header ***/
+/*** Without this header, it wont work ***/
+header("Content-type: text/css");
+
+
+$font_family = 'Arial, Helvetica, sans-serif';
+$font_size = '0.7em';
+$border = '1px solid';
+?>
+
 * {
   font-family: "Times New Roman", Times, serif;
   box-sizing: border-box;
@@ -58,9 +69,10 @@ p {
   overflow: auto;
 }
 
-/* table, th, td {
-  border: solid 1px black;
-  justify-content: space-between;
+table, th, td {
+  border: solid 1px gray;
+  padding: 1px;
+  margin: 2px;
 }
 
 table {
@@ -71,4 +83,5 @@ table {
   align-items: center;
   margin: 50px auto;
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.4);
-} */
+  text-align: center;
+}

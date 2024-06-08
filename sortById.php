@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Formularz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="style21.css" />
+    <link rel="stylesheet" media="screen" href="style21.php" />
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -101,16 +101,16 @@
       
                   if ($result->num_rows > 0) {
 
-                    echo "<table border='1'>";
-                    echo "<tbody style='width: 100%;'>
-                    <tr>
-                    <th style='padding: 2px; width: 8%;'><a href='sortById.php'>id <i class='fa fa-sort-down'></i></a></th>
-                    <th style='width: 16%;'><a href='sortByFirstNameAsc.php'>Imię <i class='fa fa-sort-down'></i></a></th>
-                    <th style='width: 25%;'><a href='sortbyLastName.php'>Nazwisko <i class='fa fa-sort-down'></i></a></th>
-                    <th><a href='sortByEmail.php'>Email <i class='fa fa-sort-down'></i></a></th>
-                    <th style='width: 13%;'><a href='sortByBirthDate.php'>Data urodzenia <i class='fa fa-sort-down'></i></a></th>
-                    <th><a href='sortBySex.php'>Płeć <i class='fa fa-sort-down'></i></a></th>
-                    </tr>";
+                    echo "<table>";
+                    echo "<tbody>
+                            <tr>
+                              <th style='padding: 2px; width: 8%;'><a href='sortByIdAsc.php'>id <i class='fa fa-sort-up'></i></a></th>
+                              <th style='width: 16%;'><a href='sortByFirstNameAsc.php'>Imię <i class='fa fa-sort-down'></i></a></th>
+                              <th style='width: 25%;'><a href='sortbyLastNameAsc.php'>Nazwisko <i class='fa fa-sort-down'></i></a></th>
+                              <th><a href='sortByEmailAsc.php'>Email <i class='fa fa-sort-down'></i></a></th>
+                              <th style='width: 13%;'><a href='sortByBirthDate.php'>Data urodzenia <i class='fa fa-sort-down'></i></a></th>
+                              <th><a href='sortBySexAsc.php'>Płeć <i class='fa fa-sort-down'></i></a></th>
+                            </tr>";
 
                       while($row = $result->fetch_assoc()) {
                           echo "<tr>";
