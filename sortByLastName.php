@@ -17,7 +17,7 @@
       <section class="container">
       <div class="form">
       <h1><a href="index.php">Formularz</a></h1>
-        <form action="users.php" method="post">
+        <form class="mainForm" action="users.php" method="post">
           <label for="firstName" class="details"><i class="fa fa-user"></i></label>
           <input type="text" name="txtFirstName" id="firstName" placeholder="Twoje imię"/>
 
@@ -73,7 +73,7 @@
           <input type="radio" name="txtSex" id="sexM" value="Mężczyzna"/>
           <label for="sex" class="details">Inny</label>
           <input type="radio" name="txtSex" id="sexDiff" value="Inny"><br> 
-          <label for="myCheck" class="details"><a href="regulamin.html" target="_blank">Czy akceptujesz regulamin?</a></label>
+          <label for="myCheck" class="details"><a id="terms" href="regulamin.html" target="_blank">Czy akceptujesz regulamin?</a></label>
           <input type="checkbox" name="checkbox" id="myCheck" onclick="init()" onchange="document.getElementById('sbmt').disabled = !this.checked;" !checked/><br>
           <span id="result"></span><br>
 
@@ -81,8 +81,8 @@
 
           <textarea name="aboutYourself" id="aboutYourself"></textarea><br>
 
-          <input type="submit" name="sbmt" id="sbmt" value="Wyślij" disabled/>
-          <input type="reset" value="Wyczyść" />
+          <input type="submit" class ="buttons" name="sbmt" id="sbmt" value="Wyślij" disabled/>
+          <input type="reset" class ="buttons" value="Wyczyść" />
         </form>
         </div>
       </section>
@@ -101,7 +101,7 @@
       
                   if ($result->num_rows > 0) {
 
-                    echo "<table>";
+                    echo "<table class='mainTable'>";
                     echo "<tbody>
                             <tr>
                               <th style='padding: 2px; width: 8%;'><a href='sortByIdAsc.php'>id <i class='fa fa-sort-down'></i></a></th>
@@ -113,7 +113,7 @@
                             </tr>";
 
                       while($row = $result->fetch_assoc()) {
-                          echo "<tr>";
+                          echo "<tr class='active-row'>";
                           echo "<td>" . $row["id"]. "</td>";
                           echo "<td>" . $row["fldFirstName"]. "</td>";
                           echo "<td>" . $row["fldLastName"]. "</td>";
@@ -133,6 +133,11 @@
             echo 'Error occured!';
           }
         ?>
+      </section>
+      <section>
+          <div class="button-container">
+            <button>Konwertuj do pliku CSV</button>  
+          </div>
       </section>
     </main>
     <script src="app.js"></script>

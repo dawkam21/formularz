@@ -17,17 +17,85 @@ $border = '1px solid';
 }
 
 body {
-  display: flex;
-  height: 100vh;
   align-items: center;
   justify-content: center;
   padding: 10px;
   background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
   font-size: 14px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  a:visited {
+    text-decoration: none;
+    color: white;
+  }
+
+.container {
 }
 
+#history {
+
+}
+
+.mainForm {
+  padding: 15px;
+}
+
+.mainTable {
+  border-collapse: collapse;
+  margin: 25px auto;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.mainTable tbody {
+  
+}
+
+.mainTable th {
+  background-color: grey;
+  color: white;
+  font-weight: bold;
+  height: 50px;
+}
+
+.mainTable td {
+  padding: 12px 15px;
+}
+
+.mainTable tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.mainTable tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.mainTable tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+h1 a {
+  color: black;
+}
+
+h1 a:visited {
+  color: black;
+}
+
+#terms {
+  color: black;
+}
+
+
 .form {
-  display: flex;
   max-width: 700px;
   width: 100%;
   background-color: #fff;
@@ -69,19 +137,53 @@ p {
   overflow: auto;
 }
 
-table, th, td {
-  border: solid 1px gray;
-  padding: 1px;
-  margin: 2px;
-}
-
 table {
-  width: 100%;
+  width: 60%;
   background-color: #fff;
   padding: 25px 30px;
-  border-radius: 10px;
   align-items: center;
   margin: 50px auto;
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.4);
   text-align: center;
+  border-radius: 10px;
+}
+
+.button-container {
+  margin: 15px 0;
+  display: flex;
+  position: absolute;
+  left: 83%;
+  bottom: 1%;
+}
+
+.button-container button {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 1);
+  transition: 0.3s;
+}
+
+.button-container button:hover {
+  background-color: rgba(128, 128, 128, 0.6);
+}
+
+.buttons {
+  width: 25%;
+  padding: 10px;
+  font-size: 20px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 1);
+  transition: 0.3s;
+}
+
+.buttons:hover {
+  background-color: rgba(128, 128, 128, 0.6);
 }
