@@ -18,27 +18,42 @@
       <div class="form">
       <h1><a href="index.php">Formularz</a></h1>
         <form class="mainForm" action="users.php" method="post">
+          <div class="details">
           <label for="firstName" class="details"><i class="fa fa-user"></i></label>
           <input type="text" name="txtFirstName" id="firstName" placeholder="Twoje imię"/>
+          </div>
 
+          <div class="details">
           <label for="lastName" class="details"><i class="fa fa-user"></i></label>
           <input type="text" name="txtLastName" id="lastName" placeholder="Twoje nazwisko"/>
-            <br>
+          </div>
+
+          <div class="details" id="box2">
           <label for="pass" class="details"><i class="fa fa-lock"></i></label>
           <input type="password" name="txtPassword" id="pass" placeholder="Hasło"/>
+          </div>
 
+          <div class="details">
           <label for="cnfmPassword" class="details"><i class="fa fa-lock"></i></label>
           <input type="password" name="txtPassword2" id="cnfmPassword" placeholder="Powtórz hasło"/>
-            <br>
+          </div>
+
+          <div class="details">
           <label for="email" class="details"><i class="fa fa-envelope"></i></label>
           <input type="email" name="txtEmail" id="email" placeholder="Email"/>
+          </div>
 
+          <div class="details">
           <label for="phoneNumber" class="details"><i class="fa fa-phone"></i></label>
           <input type="text" name="txtPhone" id="phoneNumber" minlength="9" maxlength="9" placeholder="Numer telefonu"/>
-            <br>   
+          </div>
+
+          <div class="details">
           <label for="birthday" class="details">Data urodzenia : </label>
           <input type="date" name="txtBirthDate" id="birthday" min="1900-12-31" max="2019-12-31"/>
-            <br>
+          </div>
+
+          <div class="details">
           <!-- <select name="woj">
             <option value="1">Dolnośląskie</option>
             <option value="2">Kujawsko-Pomorskie</option>
@@ -56,37 +71,50 @@
             <option value="14">Warmińsko-Mazurskie</option>
             <option value="15">Wielkopolskie</option>
             <option value="16">Zachodniopomorskie</option>
-         </select> -->
+            </select> -->
+            <label for="birthPlace" class="details">Miejsce urodzenia: </label>
+            <input type="text" name="txtBirthPlace" id="birthPlace" />
+            </div>
 
-          <label for="birthPlace" class="details">Miejsce urodzenia: </label>
-          <input type="text" name="txtBirthPlace" id="birthPlace" />
-            <br>
-          <label for="weight" class="details">Waga (kg): </label>
-          <input type="number" name="txtWeight" id="weight" min="1" max="300"/>
-            <br>
-          <label for="height" class="details">Wzrost (cm): </label>
-          <input type="number" name="txtHeight" id="height" min="30" max="250"/>
-            <br>
-          <label for="sex" class="details">K</label>
-          <input type="radio" name="txtSex" id="sexK" value="Kobieta"/>
-          <label for="sex" class="details">M</label>
-          <input type="radio" name="txtSex" id="sexM" value="Mężczyzna"/>
-          <label for="sex" class="details">Inny</label>
-          <input type="radio" name="txtSex" id="sexDiff" value="Inny"><br> 
-          <label for="myCheck" class="details"><a id="terms" href="regulamin.html" target="_blank">Czy akceptujesz regulamin?</a></label>
-          <input type="checkbox" name="checkbox" id="myCheck" onclick="init()" onchange="document.getElementById('sbmt').disabled = !this.checked;" !checked/><br>
-          <span id="result"></span><br>
+            <div class="details">
+            <label for="weight" class="details">Waga (kg): </label>
+            <input type="number" name="txtWeight" id="weight" min="1" max="300"/>
+            </div>
 
-          <label for="aboutYourself" class="details">O sobie: </label><br>
+            <div class="details">
+            <label for="height" class="details">Wzrost (cm): </label>
+            <input type="number" name="txtHeight" id="height" min="30" max="250"/>
+            </div>
 
-          <textarea name="aboutYourself" id="aboutYourself"></textarea><br>
+            <div class="details">
+            <label for="sex" class="details">K</label>
+            <input type="radio" name="txtSex" id="sexK" value="Kobieta"/>
+            <label for="sex" class="details">M</label>
+            <input type="radio" name="txtSex" id="sexM" value="Mężczyzna"/>
+            <label for="sex" class="details">Inny</label>
+            <input type="radio" name="txtSex" id="sexDiff" value="Inny">
+            </div>
 
-          <input type="submit" class ="buttons" name="sbmt" id="sbmt" value="Wyślij" disabled/>
-          <input type="reset" class ="buttons" value="Wyczyść" />
+            <div class="details">
+            <label for="myCheck" class="details"><a id="terms" href="regulamin.html" target="_blank">Czy akceptujesz regulamin?</a></label>
+            <input type="checkbox" name="checkbox" id="myCheck" onclick="init()" onchange="document.getElementById('sbmt').disabled = !this.checked;" !checked/>
+            </div>
+
+            <span id="result"></span><br>
+
+            <label for="aboutYourself" class="details">O sobie: </label>
+
+            <textarea name="aboutYourself" id="aboutYourself"></textarea>
+
+            <div class="details">
+            <input type="submit" class ="buttons" name="sbmt" id="sbmt" value="Wyślij" disabled/>
+            <input type="reset" class ="buttons" value="Wyczyść" />
+            </div>
+
         </form>
         </div>
       </section>
-      <section id="history">
+      <section class="history">
         <?php
           require_once "connect.php";
           try {
@@ -136,7 +164,36 @@
       </section>
       <section>
           <div class="button-container">
-            <button>Konwertuj do pliku CSV</button>  
+          <input type="submit" name="csv" value="Konwertuj do pliku CSV">
+          <?php
+                  try {
+
+                      $con2 = new mysqli('localhost', 'root', '', 'db_contact');
+                    
+                      if ($con2->connect_errno != 0) {
+                          throw new Exception("Błąd połączenia z bazą danych: " . $con->connect_error);
+                      } else {
+                        
+                        if (isset($_POST['csv'])) {
+                            $sql2 = "SELECT fldFirstName FROM tbl_users";
+                            $csv = $con2->query($sql2);
+
+                            if($csv && isset($_POST['csv'])) {
+                            echo "<script>
+                            alert('Skonwertowano do pliku humans.txt');
+                            window.location.href = '".$_SERVER['HTTP_REFERER']."';
+                                  </script>";
+                            }
+                          } else {
+                              echo 'Przycisk nie został naciśnięty.';
+                          }
+                      }
+                  } catch (Exception $e) {
+                      echo 'Wystąpił błąd!';
+                  }
+
+              $con->close();
+            ?>
           </div>
       </section>
     </main>

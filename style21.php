@@ -24,26 +24,22 @@ body {
   font-size: 14px;
   }
   
-  a {
-    text-decoration: none;
-    color: white;
+a {
+  text-decoration: none;
+  color: white;
   }
   
-  a:visited {
-    text-decoration: none;
-    color: white;
+a:visited {
+  text-decoration: none;
+  color: white;
   }
 
 .container {
 }
 
-#history {
-
+.history {
 }
 
-.mainForm {
-  padding: 15px;
-}
 
 .mainTable {
   border-collapse: collapse;
@@ -52,30 +48,30 @@ body {
   min-width: 400px;
   border-radius: 10px;
   overflow: hidden;
-}
-
-.mainTable tbody {
+  }
   
-}
+  .mainTable tbody {
+    
+  }
 
-.mainTable th {
-  background-color: grey;
-  color: white;
-  font-weight: bold;
-  height: 50px;
-}
-
-.mainTable td {
-  padding: 12px 15px;
+  .mainTable th {
+    background-color: grey;
+    color: white;
+    font-weight: bold;
+    height: 40px;
+    }
+    
+    .mainTable td {
+      padding: 8px 10px;
 }
 
 .mainTable tbody tr {
   border-bottom: 1px solid #dddddd;
-}
-
-.mainTable tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
-}
+  }
+  
+  .mainTable tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    }
 
 .mainTable tbody tr.active-row {
   font-weight: bold;
@@ -93,24 +89,29 @@ h1 a:visited {
 #terms {
   color: black;
 }
-
-
+    
 .form {
-  max-width: 700px;
-  width: 100%;
-  background-color: #fff;
-  padding: 25px 30px;
-  border-radius: 10px;
-  align-items: center;
-  justify-content: center;
-  margin: 50px auto;
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.4);
+    max-width: 700px;
+    width: 100%;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.4);
+}
+    
+.mainForm {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 input {
   margin: 3px;
 }
-
+      
 textarea {
   margin: 3px;
 }
@@ -156,7 +157,7 @@ table {
   bottom: 1%;
 }
 
-.button-container button {
+.button-container input[type="submit"] {
   width: 100%;
   padding: 10px;
   font-size: 20px;
@@ -168,7 +169,7 @@ table {
   transition: 0.3s;
 }
 
-.button-container button:hover {
+.button-container input[type="submit"]:hover {
   background-color: rgba(128, 128, 128, 0.6);
 }
 
@@ -186,4 +187,14 @@ table {
 
 .buttons:hover {
   background-color: rgba(128, 128, 128, 0.6);
+}
+
+.details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#box2 {
+  order: 0;
 }

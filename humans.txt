@@ -1,0 +1,39 @@
+.button-container {
+  margin: 15px 0;
+  display: flex;
+  position: absolute;
+  left: 83%;
+  bottom: 1%;
+}
+
+.button-container input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 1);
+  transition: 0.3s;
+}
+
+.button-container input[type="submit"]:hover {
+  background-color: rgba(128, 128, 128, 0.6);
+}
+
+.buttons {
+  width: 25%;
+  padding: 10px;
+  font-size: 20px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 1);
+  transition: 0.3s;
+}
+
+.buttons:hover {
+  background-color: rgba(128, 128, 128, 0.6);
+}
