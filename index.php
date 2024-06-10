@@ -198,7 +198,7 @@
       $con2 = new mysqli('localhost', 'root', '', 'db_contact');
       if(isset($_POST['csv'])) {
         echo "<script>
-          alert('Skonwertowano do pliku humans.txt');
+          alert('Skonwertowano do pliku humans.csv');
           window.location.href = '" . $_SERVER['HTTP_REFERER'] . "';
           </script>";
               }
