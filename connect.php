@@ -1,8 +1,8 @@
-<?php 
+<?php
 
-    $HOSTNAME = 'localhost';
-    $USERNAME = 'root';
-    $PASSWORD = '';
-    $DATABASE = 'db_contact';
+$HOSTNAME = 'localhost';
+$USERNAME = 'root';
+$PASSWORD = '';
+$DATABASE = 'db_contact';
 
 ?>

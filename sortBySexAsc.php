@@ -16,93 +16,120 @@
     <main>
       <section class="container">
       <div class="form">
-      <h1><a href="index.php">Formularz</a></h1>
-        <form class="mainForm" action="users.php" method="post">
-          <label for="firstName" class="details"><i class="fa fa-user"></i></label>
-          <input type="text" name="txtFirstName" id="firstName" placeholder="Twoje imię"/>
+        <h1><a href="index.php">Formularz</a></h1>
+          <form action="users.php" method="post">
+            <div class="details">
+            <label for="firstName" class="details"><i class="fa fa-user"></i></label>
+            <input type="text" name="txtFirstName" id="firstName" placeholder="Twoje imię"/>
+            </div>
 
-          <label for="lastName" class="details"><i class="fa fa-user"></i></label>
-          <input type="text" name="txtLastName" id="lastName" placeholder="Twoje nazwisko"/>
-            <br>
-          <label for="pass" class="details"><i class="fa fa-lock"></i></label>
-          <input type="password" name="txtPassword" id="pass" placeholder="Hasło"/>
+            <div class="details">
+            <label for="lastName" class="details"><i class="fa fa-user"></i></label>
+            <input type="text" name="txtLastName" id="lastName" placeholder="Twoje nazwisko"/>
+            </div>
 
-          <label for="cnfmPassword" class="details"><i class="fa fa-lock"></i></label>
-          <input type="password" name="txtPassword2" id="cnfmPassword" placeholder="Powtórz hasło"/>
-            <br>
-          <label for="email" class="details"><i class="fa fa-envelope"></i></label>
-          <input type="email" name="txtEmail" id="email" placeholder="Email"/>
+            <div class="details" id="box2">
+            <label for="pass" class="details"><i class="fa fa-lock"></i></label>
+            <input type="password" name="txtPassword" id="pass" placeholder="Hasło"/>
+            </div>
 
-          <label for="phoneNumber" class="details"><i class="fa fa-phone"></i></label>
-          <input type="text" name="txtPhone" id="phoneNumber" minlength="9" maxlength="9" placeholder="Numer telefonu"/>
-            <br>   
-          <label for="birthday" class="details">Data urodzenia : </label>
-          <input type="date" name="txtBirthDate" id="birthday" min="1900-12-31" max="2019-12-31"/>
-            <br>
-          <!-- <select name="woj">
-            <option value="1">Dolnośląskie</option>
-            <option value="2">Kujawsko-Pomorskie</option>
-            <option value="3">Lubelskie</option>
-            <option value="4">Lubuskie</option>
-            <option value="5">Łódzkie</option>
-            <option value="6">Małopolskie</option>
-            <option value="7">Mazowieckie</option>
-            <option value="8">Opolskie</option>
-            <option value="9">Podkarpackie</option>
-            <option value="10">Podlaskie</option>
-            <option value="11">Pomorskie</option>
-            <option value="12">Śląskie</option>
-            <option value="13">Świętokrzyskie</option>
-            <option value="14">Warmińsko-Mazurskie</option>
-            <option value="15">Wielkopolskie</option>
-            <option value="16">Zachodniopomorskie</option>
-         </select> -->
+            <div class="details">
+            <label for="cnfmPassword" class="details"><i class="fa fa-lock"></i></label>
+            <input type="password" name="txtPassword2" id="cnfmPassword" placeholder="Powtórz hasło"/>
+            </div>
 
-          <label for="birthPlace" class="details">Miejsce urodzenia: </label>
-          <input type="text" name="txtBirthPlace" id="birthPlace" />
-            <br>
-          <label for="weight" class="details">Waga (kg): </label>
-          <input type="number" name="txtWeight" id="weight" min="1" max="300"/>
-            <br>
-          <label for="height" class="details">Wzrost (cm): </label>
-          <input type="number" name="txtHeight" id="height" min="30" max="250"/>
-            <br>
-          <label for="sex" class="details">K</label>
-          <input type="radio" name="txtSex" id="sexK" value="Kobieta"/>
-          <label for="sex" class="details">M</label>
-          <input type="radio" name="txtSex" id="sexM" value="Mężczyzna"/>
-          <label for="sex" class="details">Inny</label>
-          <input type="radio" name="txtSex" id="sexDiff" value="Inny"><br> 
-          <label for="myCheck" class="details"><a id="terms" href="regulamin.html" target="_blank">Czy akceptujesz regulamin?</a></label>
-          <input type="checkbox" name="checkbox" id="myCheck" onclick="init()" onchange="document.getElementById('sbmt').disabled = !this.checked;" !checked/><br>
-          <span id="result"></span><br>
+            <div class="details">
+            <label for="email" class="details"><i class="fa fa-envelope"></i></label>
+            <input type="email" name="txtEmail" id="email" placeholder="Email"/>
+            </div>
 
-          <label for="aboutYourself" class="details">O sobie: </label><br>
+            <div class="details">
+            <label for="phoneNumber" class="details"><i class="fa fa-phone"></i></label>
+            <input type="text" name="txtPhone" id="phoneNumber" minlength="9" maxlength="9" placeholder="Numer telefonu"/>
+            </div>
 
-          <textarea name="aboutYourself" id="aboutYourself"></textarea><br>
+            <div class="details">
+            <label for="birthday" class="details">Data urodzenia : </label>
+            <input type="date" name="txtBirthDate" id="birthday" min="1900-12-31" max="2019-12-31"/>
+            </div>
 
-          <input type="submit" class ="buttons" name="sbmt" id="sbmt" value="Wyślij" disabled/>
-          <input type="reset" class ="buttons" value="Wyczyść" />
-        </form>
+            <div class="details">
+            <!-- <select name="woj">
+              <option value="1">Dolnośląskie</option>
+              <option value="2">Kujawsko-Pomorskie</option>
+              <option value="3">Lubelskie</option>
+              <option value="4">Lubuskie</option>
+              <option value="5">Łódzkie</option>
+              <option value="6">Małopolskie</option>
+              <option value="7">Mazowieckie</option>
+              <option value="8">Opolskie</option>
+              <option value="9">Podkarpackie</option>
+              <option value="10">Podlaskie</option>
+              <option value="11">Pomorskie</option>
+              <option value="12">Śląskie</option>
+              <option value="13">Świętokrzyskie</option>
+              <option value="14">Warmińsko-Mazurskie</option>
+              <option value="15">Wielkopolskie</option>
+              <option value="16">Zachodniopomorskie</option>
+              </select> -->
+              <label for="birthPlace" class="details">Miejsce urodzenia: </label>
+              <input type="text" name="txtBirthPlace" id="birthPlace" />
+              </div>
+
+              <div class="details">
+              <label for="weight" class="details">Waga (kg): </label>
+              <input type="number" name="txtWeight" id="weight" min="1" max="300"/>
+              </div>
+
+              <div class="details">
+              <label for="height" class="details">Wzrost (cm): </label>
+              <input type="number" name="txtHeight" id="height" min="30" max="250"/>
+              </div>
+
+              <div class="details">
+              <label for="sex" class="details">K</label>
+              <input type="radio" name="txtSex" id="sexK" value="Kobieta"/>
+              <label for="sex" class="details">M</label>
+              <input type="radio" name="txtSex" id="sexM" value="Mężczyzna"/>
+              <label for="sex" class="details">Inny</label>
+              <input type="radio" name="txtSex" id="sexDiff" value="Inny">
+              </div>
+
+              <div class="details">
+              <label for="myCheck" class="details"><a id="terms" href="regulamin.html" target="_blank">Czy akceptujesz regulamin?</a></label>
+              <input type="checkbox" name="checkbox" id="myCheck" onclick="init()" onchange="document.getElementById('sbmt').disabled = !this.checked;" !checked/>
+              </div>
+
+              <span id="result"></span><br>
+
+              <label for="aboutYourself" class="details">O sobie: </label>
+
+              <textarea name="aboutYourself" id="aboutYourself"></textarea>
+
+              <div class="details">
+              <input type="submit" class ="buttons" name="sbmt" id="sbmt" value="Wyślij" disabled/>
+              <input type="reset" class ="buttons" value="Wyczyść" />
+              </div>
+
+          </form>
         </div>
-      </section>
-      <section id="history">
+      <div id="history">
         <?php
           require_once "connect.php";
           try {
             $con = new mysqli($HOSTNAME, $USERNAME, $PASSWORD, $DATABASE);
               
-              if($con->connect_errno != 0) {
-                throw new Exception(mysqli_connect_errno());
+            if($con->connect_errno != 0) {
+              throw new Exception(mysqli_connect_errno());
               } else {
-                $sql1 = "SELECT id, fldFirstName, fldLastName, fldEmail, fldBirthDate, fldSex FROM tbl_users ORDER BY fldSex ASC LIMIT 10";
-      
+                $sql1 = "SELECT id, fldFirstName, fldLastName, fldEmail, fldBirthDate, fldSex FROM tbl_users ORDER BY fldSex ASC LIMIT 18";
+                
                 $result = $con->query($sql1);
-      
-                  if ($result->num_rows > 0) {
+                
+                if ($result->num_rows > 0) {
 
-                    echo "<table class='mainTable'>";
-                    echo "<tbody>
+                  echo "<table class='mainTable'>";
+                  echo "<tbody>
                             <tr>
                               <th style='padding: 2px; width: 8%;'><a href='sortByIdAsc.php'>id <i class='fa fa-sort-down'></i></a></th>
                               <th style='width: 16%;'><a href='sortByFirstNameAsc.php'>Imię <i class='fa fa-sort-down'></i></a></th>
@@ -133,12 +160,34 @@
             echo 'Error occured!';
           }
         ?>
+      </div>
       </section>
-      <section>
-          <div class="button-container">
-            <button>Konwertuj do pliku CSV</button>  
-          </div>
-      </section>
+      <section id="button">
+        <?php
+      
+      $con2 = new mysqli('localhost', 'root', '', 'db_contact');
+      if(isset($_POST['csv'])) {
+        echo "<script>
+        alert('Skonwertowano do pliku humans.csv');
+        window.location.href = '" . $_SERVER['HTTP_REFERER'] . "';
+        </script>";
+              }
+              $query = "SELECT * FROM tbl_users";
+              
+              $result = mysqli_query($con2, $query);
+              $fp = fopen('humans.csv', 'w');
+              while($row = mysqli_fetch_assoc($result)){
+                fputcsv($fp, $row);
+                }
+                fclose($fp);
+                
+                ?>
+                <div class="button-container">
+                  <form method="post">
+                    <input type="submit" id="csv" name="csv" value="Konwertuj do pliku CSV">
+                    </form>
+                    </div>
+                    </section>
     </main>
     <script src="app.js"></script>
   </body>
