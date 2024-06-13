@@ -57,24 +57,7 @@
           </div>
 
           <div class="details">
-            <!-- <select name="woj">
-                        <option value="1">Dolnośląskie</option>
-                        <option value="2">Kujawsko-Pomorskie</option>
-                        <option value="3">Lubelskie</option>
-                        <option value="4">Lubuskie</option>
-                        <option value="5">Łódzkie</option>
-                        <option value="6">Małopolskie</option>
-                        <option value="7">Mazowieckie</option>
-                        <option value="8">Opolskie</option>
-                        <option value="9">Podkarpackie</option>
-                        <option value="10">Podlaskie</option>
-                        <option value="11">Pomorskie</option>
-                        <option value="12">Śląskie</option>
-                        <option value="13">Świętokrzyskie</option>
-                        <option value="14">Warmińsko-Mazurskie</option>
-                        <option value="15">Wielkopolskie</option>
-                        <option value="16">Zachodniopomorskie</option>
-                        </select> -->
+
             <label for="birthPlace" class="details">Miejsce urodzenia: </label>
             <input type="text" name="txtBirthPlace" id="birthPlace" />
           </div>
@@ -121,86 +104,60 @@
         require_once "connect.php";
         try {
           $con = new mysqli($HOSTNAME, $USERNAME, $PASSWORD, $DATABASE);
-
           if ($con->connect_errno != 0) {
             throw new Exception(mysqli_connect_errno());
-          } else {
-            $sql1 = "SELECT id, fldFirstName, fldLastName, fldEmail, fldBirthDate, fldSex FROM tbl_users WHERE fldFirstName IS NOT NULL ORDER BY id DESC LIMIT 18";
-
-            $result = $con->query($sql1);
-
-            if ($result->num_rows > 0) {
-
-              echo "<table class='mainTable'>";
-              echo "<tbody>
-                    <tr>
-                      <th style='padding: 2px; width: 8%;'><a class='ths' href='sortByIdAsc.php'>id <i class='fa fa-sort-down'></i></a></th>
-                      <th style='width: 16%;'><a href='sortByFirstNameAsc.php'>Imię <i class='fa fa-sort-down'></i></a></th>
-                      <th style='width: 25%;'><a href='sortbyLastNameAsc.php'>Nazwisko <i class='fa fa-sort-down'></i></a></th>
-                      <th><a href='sortByEmailAsc.php'>Email <i class='fa fa-sort-down'></i></a></th>
-                      <th style='width: 13%;'><a href='sortByBirthDate.php'>Data urodzenia <i class='fa fa-sort-down'></i></a></th>
-                      <th><a href='sortBySexAsc.php'>Płeć <i class='fa fa-sort-down'></i></a></th>
-                    </tr>";
-
-              while ($row = $result->fetch_assoc()) {
-                echo "<tr class='active-row' onclick=checks();>";
-                echo "<td id='ids'>" . $row["id"] . "</td>";
-                echo "<td>" . $row["fldFirstName"] . "</td>";
-                echo "<td>" . $row["fldLastName"] . "</td>";
-                echo "<td>" . $row["fldEmail"] . "</td>";
-                echo "<td>" . $row["fldBirthDate"] . "</td>";
-                echo "<td>" . $row["fldSex"] . "</td";
-                echo "</tr>";
-              }
-
-              echo "</tbody></table>";
             } else {
-              echo "Brak wyników";
-            }
-          }
+              $sql1 = "SELECT id, fldFirstName, fldLastName, fldEmail, fldBirthDate, fldSex FROM tbl_users WHERE fldFirstName IS NOT NULL ORDER BY id DESC LIMIT 18";
+              
+              $result = $con->query($sql1);
+
+              if ($result->num_rows > 0) {
+                
+                echo "<table class='mainTable'>";
+                echo "<tbody>
+                <tr>
+                <th style='padding: 2px; width: 8%;'><a href='sortByIdAsc.php'>id <i class='fa fa-sort-down'></i></th>
+                <th style='width: 16%;'><a href='sortByFirstNameAsc.php'>Imię <i class='fa fa-sort-down'></i></a></th>
+                <th style='width: 25%;'><a href='sortbyLastNameAsc.php'>Nazwisko <i class='fa fa-sort-down'></i></a></th>
+                <th><a href='sortByEmailAsc.php'>Email <i class='fa fa-sort-down'></i></a></th>
+                <th style='width: 13%;'><a href='sortByBirthDate.php'>Data urodzenia <i class='fa fa-sort-down'></i></a></th>
+                <th><a href='sortBySexAsc.php'>Płeć <i class='fa fa-sort-down'></i></a></th>
+                </tr>";
+                
+                while ($row = $result->fetch_assoc()) {
+                  echo "<tr class='active-row' onclick=checks();>";
+                  echo "<td id='ids'>" . $row["id"] . "</td>";
+                  echo "<td>" . $row["fldFirstName"] . "</td>";
+                  echo "<td>" . $row["fldLastName"] . "</td>";
+                  echo "<td>" . $row["fldEmail"] . "</td>";
+                  echo "<td>" . $row["fldBirthDate"] . "</td>";
+                  echo "<td>" . $row["fldSex"] . "</td";
+                  echo "</tr>";
+                  }
+                  
+                  echo "</tbody></table>";
+                  } else {
+                    echo "Brak wyników";
+                    }
+                    }
         } catch (Exception $e) {
           echo 'Error occured!';
-        }
+          }
         ?>
       </div>
       <script>
         function checks() {
           console.log("lala");
-        }
-      </script>
+          }
+          </script>
     </section>
-    
-    <!-- // try {
-
-      
-      //   if ($con2->connect_errno != 0) {
-        //     throw new Exception("Błąd połączenia z bazą danych: " . $con->connect_error);
-        //   } else {
-          
-          //     if (isset($_POST['csv'])) {
-            //       $sql2 = "SELECT fldFirstName FROM tbl_users INTO OUTFILE 'humans.txt'";
-            //       $csv = $con2->query($sql2);
-            
-            //       if (isset($csv)) {
-              //         echo "<script>
-            //                 alert('Skonwertowano do pliku humans.txt');
-            //                 window.location.href = '" . $_SERVER['HTTP_REFERER'] . "';
-            //               </script>";
-            //       }
-            //     } else {
-              //       echo 'Przycisk nie został naciśnięty.';
-              //     }
-              //   }
-              // } catch (Exception $e) {
-                //   echo 'Wystąpił błąd!';
-                // }
-                
-                // $con->close(); -->
                 <section id="button">
                   <?php
       
       $con2 = new mysqli('localhost', 'root', '', 'db_contact');
-      if(isset($_POST['csvAll'])) {
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $csvX = htmlspecialchars((int)$_POST['chooseX']);
+          if(isset($_POST['csvAll'])) {
         echo "<script>
         alert('Skonwertowano do pliku humans.csv');
         window.location.href = '" . $_SERVER['HTTP_REFERER'] . "';
@@ -217,14 +174,21 @@
           }
           fclose($fp);
           
-      $csvX = (int)$_POST['chooseX'];
       
       if(isset($_POST['csvX']) && isset($_POST['chooseX'])) {
-          $queryX = "SELECT * FROM tbl_users LIMIT 5";
-          $separator = ",";
-          $resultX = mysqli_query($con2, $queryX);
-          echo "Skonwertowano $csvX rekordów";
-          
+        $csvLimit = $_POST['chooseX'];
+        $queryX = "SELECT * FROM tbl_users LIMIT $csvLimit"; // TRZEBA ZROBIĆ SORTOWANIE OD NAJNOWSZYCH!
+        $separator = ",";
+        $resultX = mysqli_query($con2, $queryX);
+        // NIE DZIAŁA ! POPRAWIĆ !
+          if ($csvLimit != 0) {
+          if ($csvLimit == 1) {
+            echo "<h1>Skonwertowano $csvLimit rekord</h1>";
+          } else if (($csvLimit > 1 && $csvLimit < 5) || ($csvLimit > 21 && $csvLimit < 25) || ($csvLimit > 31 && $csvLimit < 35) || ($csvLimit > 41 && $csvLimit < 45)) {
+            echo "<h1>Skonwertowano $csvLimit rekordy</h1>";
+          } else if (($csvLimit > 4 && $csvLimit < 22) || ($csvLimit > 24 && $csvLimit < 42) || ($csvLimit > 44 && $csvLimit < 62)) {
+            echo "<h1>Skonwertowano $csvLimit rekordów</h1>";
+          } }
           $fp = fopen('humans.csv', 'w');
           while($rowX = mysqli_fetch_assoc($resultX)){
             
@@ -232,7 +196,7 @@
             }
             fclose($fp);
             }
-            
+          }
           
         ?>
     </section>
