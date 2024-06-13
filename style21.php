@@ -82,6 +82,11 @@ a:visited {
   color: #009879;
 }
 
+.mainTable tbody tr:hover {
+  background-color: lightblue;
+  cursor: pointer;
+}
+
 h1 a {
   color: black;
 }
@@ -94,15 +99,19 @@ h1 a:visited {
   color: black;
 }
 
+#forms {
+  padding: 10px;
+}
+
 .form {
   display: flex;
   max-width: 700px;
   width: 100%;
   background-color: #fff;
-  padding: 25px 30px;
+  padding: 30px;
   border-radius: 10px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   margin: 50px auto;
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.4);
   flex-direction: column;
@@ -192,8 +201,7 @@ table {
   align-items: center;
 }
 
-#csv {
-  width: 100%;
+#csvX, #csvAll {
   padding: 10px;
   font-size: 14px;
   color: #fff;
@@ -202,7 +210,24 @@ table {
   cursor: pointer;
   background-color: rgba(128, 128, 128, 1);
   transition: 0.3s;
-  display: flex;
+}
+
+fieldset {
+  max-width: 700px;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  align-items: center;
   justify-content: center;
-  margin-left: 60px;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.4);
+}
+
+fieldset #csv {
+  width: 195px;
+  margin-right: 60px;
+}
+
+#button {
+  display: flex;
 }

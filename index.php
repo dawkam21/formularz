@@ -10,7 +10,7 @@
   <link rel="stylesheet" media="screen" href="style21.php" />
   <!-- Add icon library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+  
 </head>
 
 <body>
@@ -20,7 +20,7 @@
     <section class="container">
       <div class="form">
         <h1><a href="index.php">Formularz</a></h1>
-        <form action="users.php" method="post">
+        <form id="forms" action="users.php" method="post">
           <div class="details">
             <label for="firstName" class="details"><i class="fa fa-user"></i></label>
             <input type="text" name="txtFirstName" id="firstName" placeholder="Twoje imię" />
@@ -31,7 +31,7 @@
             <input type="text" name="txtLastName" id="lastName" placeholder="Twoje nazwisko" />
           </div>
 
-          <div class="details" id="box2">
+          <div class="details">
             <label for="pass" class="details"><i class="fa fa-lock"></i></label>
             <input type="password" name="txtPassword" id="pass" placeholder="Hasło" />
           </div>
@@ -108,12 +108,11 @@
           <label for="aboutYourself" class="details">O sobie: </label>
 
           <textarea name="aboutYourself" id="aboutYourself"></textarea>
-
+          
           <div class="details">
             <input type="submit" class="buttons" name="sbmt" id="sbmt" value="Wyślij" disabled />
-            <input type="reset" class="buttons" value="Wyczyść" />
+            <input type="reset" id="wycz" class="buttons" value="Wyczyść"/>
           </div>
-
         </form>
       </div>
 
@@ -134,18 +133,18 @@
 
               echo "<table class='mainTable'>";
               echo "<tbody>
-                                      <tr>
-                                        <th style='padding: 2px; width: 8%;'><a class='ths' href='sortByIdAsc.php'>id <i class='fa fa-sort-down'></i></a></th>
-                                        <th style='width: 16%;'><a href='sortByFirstNameAsc.php'>Imię <i class='fa fa-sort-down'></i></a></th>
-                                        <th style='width: 25%;'><a href='sortbyLastNameAsc.php'>Nazwisko <i class='fa fa-sort-down'></i></a></th>
-                                        <th><a href='sortByEmailAsc.php'>Email <i class='fa fa-sort-down'></i></a></th>
-                                        <th style='width: 13%;'><a href='sortByBirthDate.php'>Data urodzenia <i class='fa fa-sort-down'></i></a></th>
-                                        <th><a href='sortBySexAsc.php'>Płeć <i class='fa fa-sort-down'></i></a></th>
-                                      </tr>";
+                    <tr>
+                      <th style='padding: 2px; width: 8%;'><a class='ths' href='sortByIdAsc.php'>id <i class='fa fa-sort-down'></i></a></th>
+                      <th style='width: 16%;'><a href='sortByFirstNameAsc.php'>Imię <i class='fa fa-sort-down'></i></a></th>
+                      <th style='width: 25%;'><a href='sortbyLastNameAsc.php'>Nazwisko <i class='fa fa-sort-down'></i></a></th>
+                      <th><a href='sortByEmailAsc.php'>Email <i class='fa fa-sort-down'></i></a></th>
+                      <th style='width: 13%;'><a href='sortByBirthDate.php'>Data urodzenia <i class='fa fa-sort-down'></i></a></th>
+                      <th><a href='sortBySexAsc.php'>Płeć <i class='fa fa-sort-down'></i></a></th>
+                    </tr>";
 
               while ($row = $result->fetch_assoc()) {
-                echo "<tr class='active-row'>";
-                echo "<td>" . $row["id"] . "</td>";
+                echo "<tr class='active-row' onclick=checks();>";
+                echo "<td id='ids'>" . $row["id"] . "</td>";
                 echo "<td>" . $row["fldFirstName"] . "</td>";
                 echo "<td>" . $row["fldLastName"] . "</td>";
                 echo "<td>" . $row["fldEmail"] . "</td>";
@@ -164,6 +163,11 @@
         }
         ?>
       </div>
+      <script>
+        function checks() {
+          console.log("lala");
+        }
+      </script>
     </section>
     
     <!-- // try {
@@ -188,39 +192,61 @@
               //     }
               //   }
               // } catch (Exception $e) {
-      //   echo 'Wystąpił błąd!';
-      // }
-
-      // $con->close(); -->
-      <section id="button">
-        <?php
+                //   echo 'Wystąpił błąd!';
+                // }
+                
+                // $con->close(); -->
+                <section id="button">
+                  <?php
       
       $con2 = new mysqli('localhost', 'root', '', 'db_contact');
-      if(isset($_POST['csv'])) {
+      if(isset($_POST['csvAll'])) {
         echo "<script>
-          alert('Skonwertowano do pliku humans.csv');
-          window.location.href = '" . $_SERVER['HTTP_REFERER'] . "';
-          </script>";
-              }
-              $query = "SELECT * FROM tbl_users";
-              $separator = ",";
-              $result = mysqli_query($con2, $query);
-              $fp = fopen('humans.csv', 'w');
-              while($row = mysqli_fetch_assoc($result)){
-
-                fputcsv($fp, $row, $separator);
-                }
-                fclose($fp);
-                
-                ?>
-                <div class="button-container">
-                  <form method="post">
-                    <input type="submit" id="csv" name="csv" value="Konwertuj do pliku CSV">
-                    </form>
-                    </div>
-                    </section>
-  </main>
-  <script src="app.js"></script>
+        alert('Skonwertowano do pliku humans.csv');
+        window.location.href = '" . $_SERVER['HTTP_REFERER'] . "';
+        </script>";
+        }
+        $queryAll = "SELECT * FROM tbl_users ORDER BY id DESC";
+        $separator = ",";
+        $resultAll = mysqli_query($con2, $queryAll);
+        
+        $fp = fopen('humans.csv', 'w');
+        while($rowAll = mysqli_fetch_assoc($resultAll)){
+          
+          fputcsv($fp, $rowAll, $separator);
+          }
+          fclose($fp);
+          
+      $csvX = (int)$_POST['chooseX'];
+      
+      if(isset($_POST['csvX']) && isset($_POST['chooseX'])) {
+          $queryX = "SELECT * FROM tbl_users LIMIT 5";
+          $separator = ",";
+          $resultX = mysqli_query($con2, $queryX);
+          echo "Skonwertowano $csvX rekordów";
+          
+          $fp = fopen('humans.csv', 'w');
+          while($rowX = mysqli_fetch_assoc($resultX)){
+            
+            fputcsv($fp, $rowX, $separator);
+            }
+            fclose($fp);
+            }
+            
+          
+        ?>
+    </section>
+  <form method="post">
+    <fieldset>
+      <label for="csvAll">Konwertuj wszystkie</label>
+        <input type="submit" id="csvAll" name="csvAll" value="Konwertuj do pliku CSV"><br>
+      <label>Wybierz i konwertuj X</label>
+        <input type="text" name="chooseX" id="chooseX" placeholder="X">
+        <input type="submit" id="csvX" name="csvX" value="Konwertuj X">
+    </fieldset>
+  </form>
+    </main>
+    <script src="app.js"></script>
 </body>
 
 </html>

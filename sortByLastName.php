@@ -17,7 +17,7 @@
       <section class="container">
       <div class="form">
         <h1><a href="index.php">Formularz</a></h1>
-          <form action="users.php" method="post">
+          <form id="forms" action="users.php" method="post">
             <div class="details">
             <label for="firstName" class="details"><i class="fa fa-user"></i></label>
             <input type="text" name="txtFirstName" id="firstName" placeholder="Twoje imię"/>
@@ -28,7 +28,7 @@
             <input type="text" name="txtLastName" id="lastName" placeholder="Twoje nazwisko"/>
             </div>
 
-            <div class="details" id="box2">
+            <div class="details">
             <label for="pass" class="details"><i class="fa fa-lock"></i></label>
             <input type="password" name="txtPassword" id="pass" placeholder="Hasło"/>
             </div>
@@ -162,32 +162,55 @@
         ?>
       </div>
     </section>
-      <section id="button">
-        <?php
+    <section id="button">
+                  <?php
       
       $con2 = new mysqli('localhost', 'root', '', 'db_contact');
-      if(isset($_POST['csv'])) {
+      if(isset($_POST['csvAll'])) {
         echo "<script>
         alert('Skonwertowano do pliku humans.csv');
         window.location.href = '" . $_SERVER['HTTP_REFERER'] . "';
         </script>";
-              }
-              $query = "SELECT * FROM tbl_users";
-              
-              $result = mysqli_query($con2, $query);
-              $fp = fopen('humans.csv', 'w');
-              while($row = mysqli_fetch_assoc($result)){
-                fputcsv($fp, $row);
-                }
-                fclose($fp);
-                
-                ?>
-                <div class="button-container">
-                  <form method="post">
-                    <input type="submit" id="csv" name="csv" value="Konwertuj do pliku CSV">
-                    </form>
-                    </div>
-                    </section>
+        }
+        $queryAll = "SELECT * FROM tbl_users ORDER BY id DESC";
+        $separator = ",";
+        $resultAll = mysqli_query($con2, $queryAll);
+        
+        $fp = fopen('humans.csv', 'w');
+        while($rowAll = mysqli_fetch_assoc($resultAll)){
+          
+          fputcsv($fp, $rowAll, $separator);
+          }
+          fclose($fp);
+          
+      $csvX = (int)$_POST['chooseX'];
+      
+      if(isset($_POST['csvX']) && isset($_POST['chooseX'])) {
+          $queryX = "SELECT * FROM tbl_users LIMIT 5";
+          $separator = ",";
+          $resultX = mysqli_query($con2, $queryX);
+          echo "Skonwertowano $csvX rekordów";
+          
+          $fp = fopen('humans.csv', 'w');
+          while($rowX = mysqli_fetch_assoc($resultX)){
+            
+            fputcsv($fp, $rowX, $separator);
+            }
+            fclose($fp);
+            }
+            
+          
+        ?>
+    </section>
+  <form method="post">
+    <fieldset>
+      <label for="csvAll">Konwertuj wszystkie</label>
+        <input type="submit" id="csvAll" name="csvAll" value="Konwertuj do pliku CSV"><br>
+      <label>Wybierz i konwertuj X</label>
+        <input type="text" name="chooseX" id="chooseX" placeholder="X">
+        <input type="submit" id="csvX" name="csvX" value="Konwertuj X">
+    </fieldset>
+  </form>
     </main>
     <script src="app.js"></script>
   </body>
