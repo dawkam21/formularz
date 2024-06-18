@@ -38,12 +38,9 @@ a:visited {
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 50px;
 }
-
-.history {
-}
-
 
 .mainTable {
   border-collapse: collapse;
@@ -52,10 +49,6 @@ a:visited {
   min-width: 400px;
   border-radius: 10px;
   overflow: hidden;
-}
-
-.mainTable tbody {
-
 }
 
 .mainTable th {
@@ -67,10 +60,6 @@ a:visited {
 
 .mainTable td {
   padding: 8px 10px;
-}
-
-.mainTable tbody tr {
-  border-bottom: 1px solid #dddddd;
 }
 
 .mainTable tbody tr:nth-of-type(even) {
@@ -163,7 +152,7 @@ table {
   display: flex;
 }
 
-.button-container input[type="submit"] {
+.button-container input[type="submit"]{
   width: 100%;
   padding: 10px;
   font-size: 14px;
@@ -201,7 +190,7 @@ table {
   align-items: center;
 }
 
-#csvX, #csvAll {
+#csvX, #csvAll, #logSbmt {
   padding: 10px;
   font-size: 14px;
   color: #fff;
@@ -210,6 +199,10 @@ table {
   cursor: pointer;
   background-color: rgba(128, 128, 128, 1);
   transition: 0.3s;
+}
+
+#csvX:hover, #csvAll:hover, #logSbmt:hover {
+  background-color: rgba(128, 128, 128, 0.6);
 }
 
 fieldset {
@@ -230,4 +223,19 @@ fieldset #csv {
 
 #button {
   display: flex;
+}
+
+#log {
+  background-color: #fff;
+  padding: 25px 30px;
+  align-items: center;
+  margin: 50px auto;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  border-radius: 10px;
+  height: 300px;
+}
+
+#log h1 {
+  font-size: 24px;
 }
