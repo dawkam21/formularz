@@ -29,3 +29,13 @@ checkbox.addEventListener("click", function () {
     let Accept = (document.getElementById("result").innerHTML = "");
   }
 });
+
+function update() {
+  
+  let firstName = document.getElementById("firstName");
+
+console.log(firstName);
+
+}
+
+update();

@@ -127,30 +127,34 @@
                 $result = $con->query($sql1);
       
                 if ($result->num_rows > 0) {
-                  
+                
                   echo "<table class='mainTable'>";
                   echo "<tbody>
                   <tr>
-                  <th style='padding: 2px; width: 8%;'><a href='sortByIdAsc.php'>id <i class='fa fa-sort-down'></i></a></th>
+                  <th style='padding: 2px; width: 8%;'><a href='sortByIdAsc.php'>id <i class='fa fa-sort-down'></i></th>
                   <th style='width: 16%;'><a href='sortByFirstNameAsc.php'>Imię <i class='fa fa-sort-down'></i></a></th>
                   <th style='width: 25%;'><a href='sortbyLastNameAsc.php'>Nazwisko <i class='fa fa-sort-down'></i></a></th>
-                              <th><a href='sortByEmail.php'>Email <i class='fa fa-sort-down'></i></a></th>
-                              <th style='width: 13%;'><a href='sortByBirthDate.php'>Data urodzenia <i class='fa fa-sort-down'></i></a></th>
-                              <th><a href='sortBySexAsc.php'>Płeć <i class='fa fa-sort-down'></i></a></th>
-                            </tr>";
-
-                      while($row = $result->fetch_assoc()) {
-                          echo "<tr class='active-row'>";
-                          echo "<td>" . $row["id"]. "</td>";
-                          echo "<td>" . $row["fldFirstName"]. "</td>";
-                          echo "<td>" . $row["fldLastName"]. "</td>";
-                          echo "<td>" . $row["fldEmail"]. "</td>";
-                          echo "<td>" . $row["fldBirthDate"]. "</td>";
-                          echo "<td>" . $row["fldSex"]. "</td";
-                          echo "</tr>";
-                          }
-                      
-                          echo "</tbody></table>";
+                  <th><a href='sortByEmail.php'>Email <i class='fa fa-sort-down'></i></a></th>
+                  <th style='width: 13%;'><a href='sortByBirthDate.php'>Data urodzenia <i class='fa fa-sort-down'></i></a></th>
+                  <th><a href='sortBySexAsc.php'>Płeć <i class='fa fa-sort-down'></i></a></th>
+                  <th>Edytuj</th>
+                  <th>Usuń</th>
+                  </tr>";
+                  
+                  while ($row = $result->fetch_assoc()) {
+                    echo "<tr class='active-row'>";
+                    echo "<td id='ids'>" . $row["id"] . "</td>";
+                    echo "<td id='firstFldName'>" . $row["fldFirstName"] . "</td>";
+                    echo "<td>" . $row["fldLastName"] . "</td>";
+                    echo "<td>" . $row["fldEmail"] . "</td>";
+                    echo "<td>" . $row["fldBirthDate"] . "</td>";
+                    echo "<td>" . $row["fldSex"] . "</td>";
+                    echo "<td class='blue'>" . "<a class='btnEdit' href='edit.php?id=$row[id]'>Edytuj" ."</td>";
+                    echo "<td class='red'>" . "<a class='btnDelete' href='delete.php?id=$row[id]'>Usuń" . "</td>";
+                    echo "</tr>";
+                    }
+                    
+                    echo "</tbody></table>";
                           } else {
                       echo "Brak wyników";
                   }

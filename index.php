@@ -100,6 +100,7 @@
       </div>
 
       <div class="history">
+
         <?php
         require_once "connect.php";
         try {
@@ -122,16 +123,20 @@
                 <th><a href='sortByEmailAsc.php'>Email <i class='fa fa-sort-down'></i></a></th>
                 <th style='width: 13%;'><a href='sortByBirthDate.php'>Data urodzenia <i class='fa fa-sort-down'></i></a></th>
                 <th><a href='sortBySexAsc.php'>Płeć <i class='fa fa-sort-down'></i></a></th>
+                <th>Edytuj</th>
+                <th>Usuń</th>
                 </tr>";
                 
                 while ($row = $result->fetch_assoc()) {
-                  echo "<tr class='active-row' onclick=checks();>";
+                  echo "<tr class='active-row'>";
                   echo "<td id='ids'>" . $row["id"] . "</td>";
-                  echo "<td>" . $row["fldFirstName"] . "</td>";
+                  echo "<td id='firstFldName'>" . $row["fldFirstName"] . "</td>";
                   echo "<td>" . $row["fldLastName"] . "</td>";
                   echo "<td>" . $row["fldEmail"] . "</td>";
                   echo "<td>" . $row["fldBirthDate"] . "</td>";
-                  echo "<td>" . $row["fldSex"] . "</td";
+                  echo "<td>" . $row["fldSex"] . "</td>";
+                  echo "<td class='blue'>" . "<a class='btnEdit' href='edit.php?id=$row[id]'>Edytuj" ."</td>";
+                  echo "<td class='red'>" . "<a class='btnDelete' href='delete.php?id=$row[id]'>Usuń" . "</td>";
                   echo "</tr>";
                   }
                   
@@ -145,11 +150,6 @@
           }
         ?>
       </div>
-      <script>
-        function checks() {
-          console.log("lala");
-          }
-          </script>
     </section>
                 <section id="button">
                   <?php

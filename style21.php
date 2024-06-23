@@ -26,6 +26,11 @@ body {
   font-size: 14px;
 }
 
+.bttnCancel {
+  text-decoration: none;
+  color: black;
+}
+
 a {
   text-decoration: none;
   color: white;
@@ -33,7 +38,6 @@ a {
 
 a:visited {
   text-decoration: none;
-  color: white;
 }
 
 .container {
@@ -90,6 +94,7 @@ h1 a:visited {
 
 #forms {
   padding: 10px;
+  min-width: 350px;
 }
 
 .form {
@@ -190,7 +195,7 @@ table {
   align-items: center;
 }
 
-#csvX, #csvAll, #logSbmt {
+#csvX, #csvAll, #logSbmt, #deleteButton, #updateButton {
   padding: 10px;
   font-size: 14px;
   color: #fff;
@@ -201,7 +206,7 @@ table {
   transition: 0.3s;
 }
 
-#csvX:hover, #csvAll:hover, #logSbmt:hover {
+#csvX:hover, #csvAll:hover, #logSbmt:hover, #deleteButton:hover, #updateButton:hover {
   background-color: rgba(128, 128, 128, 0.6);
 }
 
@@ -238,4 +243,93 @@ fieldset #csv {
 
 #log h1 {
   font-size: 24px;
+}
+
+.btnEdit, .btnDelete {
+  font-weight: bold;
+  color: #009879;
+}
+
+.edith2 {
+  text-align: center;
+  padding: 5px;
+}
+
+.row-3 {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.col-form-label {
+  width: 60px;
+}
+
+.col-sm-6 {
+  display: flex;
+  justify-content: right;
+}
+
+.row-4 {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px 0;
+}
+
+.red:hover, .red:hover a {
+  background-color: red;
+  color: white;
+}
+
+.blue:hover, .blue:hover a {
+  background-color: gray;
+  color: white;
+}
+
+.bttnSbmt {
+  padding: 10px;
+  font-size: 14px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 1);
+  transition: 0.3s;
+}
+
+.bttnSbmt:hover {
+  padding: 10px;
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgba(128, 128, 128, 0.6);
+    transition: 0.3s;
+}
+
+.bttnCancel {
+  padding: 10px;
+  font-size: 14px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgba(255, 0, 0, 1);
+  transition: 0.3s;
+}
+
+.bttnCancel:hover {
+  padding: 10px;
+  font-size: 14px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgba(255, 0, 0, 0.6);
+  transition: 0.3s;
+}
+
+.cancelBttn {
+  display: flex;
 }
