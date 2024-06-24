@@ -42,7 +42,7 @@ a:visited {
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 2fr;
   column-gap: 50px;
 }
 
@@ -246,7 +246,13 @@ fieldset #csv {
 }
 
 .log h3 {
+  background-color: lightyellow;
+}
+
+.log h3 a{
   font-size: 24px;
+  color: black;
+  text-decoration: underline;
 }
 
 .btnEdit, .btnDelete {

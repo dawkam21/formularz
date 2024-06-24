@@ -19,7 +19,7 @@
   <main>
     <section class="container">
       <div class="form">
-        <h1><a href="index.php">Formularz</a></h1>
+        <h1><a href="index1.php">Formularz</a></h1>
         <form id="forms" action="users.php" method="post">
           <div class="details">
             <label for="firstName" class="details"><i class="fa fa-user"></i></label>
@@ -149,16 +149,10 @@
           }
         ?>
       </div>
-      <div class="log">
-          <h3>Zaloguj się</h3>
-          <label for="log1">Login:</label>
-          <input type="text" name="log" id="log1">
+      <!-- <div class="log">
+          <h3><a href="log.php" target="_blank" rel="noopener noreferrer">Zaloguj się jako użytkownik</a></h3>
 
-          <div class="sbmrstLog">
-            <input type="submit" id="sbmLog" value="Zaloguj">
-            <input type="reset" id="rstLog" value="Wyczyść">
-          </div>
-      </div>
+      </div> -->
     </section>
                 <section id="button">
                   <?php

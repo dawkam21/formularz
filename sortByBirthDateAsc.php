@@ -16,7 +16,7 @@
     <main>
       <section class="container">
       <div class="form">
-        <h1><a href="index.php">Formularz</a></h1>
+        <h1><a href="index1.php">Formularz</a></h1>
           <form id="forms" action="users.php" method="post">
             <div class="details">
             <label for="firstName" class="details"><i class="fa fa-user"></i></label>
@@ -96,11 +96,12 @@
               </div>
 
               <div class="details">
-              <label for="myCheck" class="details"><a id="terms" href="regulamin.html" target="_blank">Czy akceptujesz regulamin?</a></label>
+              <label for="myCheck" class="details"><a id="terms" href="regulamin.html" target="_blank"><b>Czy akceptujesz regulamin?</b></a></label>
               <input type="checkbox" name="checkbox" id="myCheck" onclick="init()" onchange="document.getElementById('sbmt').disabled = !this.checked;" !checked/>
               </div>
 
               <span id="result"></span>
+
 
               <label for="aboutYourself" class="details">O sobie: </label>
 
