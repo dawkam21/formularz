@@ -73,7 +73,7 @@
 
           echo "<script>
           alert('Zaktualizowano pomyślnie');
-          window.location.href = '" . "index.php" . "';
+          window.location.href = '" . "index1.php" . "';
           </script>";
 
         exit;
@@ -139,10 +139,10 @@
         </div>
         <div class="row-4">
           <div class="sbmtBttn">
-            <button type="submit" class="bttnSbmt">Zatwierdź</button>
+            <a href="index1.php"><button type="submit" class="bttnSbmt">Zatwierdź</button></a>
           </div>
           <div class="cancelBttn">
-            <a href="index.php" class="bttnCancel" role="button">Anuluj</a>
+            <a href="index1.php" class="bttnCancel" role="button">Anuluj</a>
           </div>
         </div>
       </form>

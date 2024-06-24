@@ -10,6 +10,6 @@
         $con->query($sql);
     }
 
-    header("location: index.php");
+    header("location: index1.php");
     exit;
 ?>
