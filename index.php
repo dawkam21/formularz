@@ -57,7 +57,6 @@
           </div>
 
           <div class="details">
-
             <label for="birthPlace" class="details">Miejsce urodzenia: </label>
             <input type="text" name="txtBirthPlace" id="birthPlace" />
           </div>
@@ -86,7 +85,7 @@
             <input type="checkbox" name="checkbox" id="myCheck" onclick="init()" onchange="document.getElementById('sbmt').disabled = !this.checked;" !checked />
           </div>
 
-          <span id="result"></span><br>
+          <span id="result"></span>
 
           <label for="aboutYourself" class="details">O sobie: </label>
 
@@ -149,6 +148,16 @@
           echo 'Error occured!';
           }
         ?>
+      </div>
+      <div class="log">
+          <h3>Zaloguj się</h3>
+          <label for="log1">Login:</label>
+          <input type="text" name="log" id="log1">
+
+          <div class="sbmrstLog">
+            <input type="submit" id="sbmLog" value="Zaloguj">
+            <input type="reset" id="rstLog" value="Wyczyść">
+          </div>
       </div>
     </section>
                 <section id="button">

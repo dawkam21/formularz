@@ -42,7 +42,7 @@ a:visited {
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 2fr 1fr;
   column-gap: 50px;
 }
 
@@ -233,18 +233,19 @@ fieldset #csv {
   padding-bottom: 20px;
 }
 
-#log {
+.log {
   background-color: #fff;
   padding: 25px 30px;
   align-items: center;
   margin: 50px auto;
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.4);
-  text-align: center;
   border-radius: 10px;
   height: 300px;
+  display: flex;
+  flex-direction: column;
 }
 
-#log h1 {
+.log h3 {
   font-size: 24px;
 }
 

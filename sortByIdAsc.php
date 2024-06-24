@@ -100,7 +100,7 @@
               <input type="checkbox" name="checkbox" id="myCheck" onclick="init()" onchange="document.getElementById('sbmt').disabled = !this.checked;" !checked/>
               </div>
 
-              <span id="result"></span><br>
+              <span id="result"></span>
 
               <label for="aboutYourself" class="details">O sobie: </label>
 
