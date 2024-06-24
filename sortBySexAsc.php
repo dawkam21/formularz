@@ -190,7 +190,7 @@
           if(isset($_POST['csvX']) && isset($_POST['chooseX'])) {
             $csvX = (int)$_POST['chooseX'];
             $csvLimit = (int)$_POST['chooseX'];
-            $queryX = "SELECT * FROM tbl_users LIMIT $csvLimit"; // TRZEBA ZROBIĆ SORTOWANIE OD NAJNOWSZYCH!
+            $queryX = "SELECT * FROM tbl_users ORDER BY id DESC LIMIT $csvLimit";
             $separator = ",";
             $resultX = mysqli_query($con2, $queryX);
             // NIE DZIAŁA ! POPRAWIĆ !

@@ -190,10 +190,10 @@
           if(isset($_POST['csvX']) && isset($_POST['chooseX'])) {
             $csvX = (int)$_POST['chooseX'];
             $csvLimit = (int)$_POST['chooseX'];
-            $queryX = "SELECT * FROM tbl_users LIMIT $csvLimit"; // TRZEBA ZROBIĆ SORTOWANIE OD NAJNOWSZYCH!
+            $queryX = "SELECT * FROM `tbl_users` ORDER BY `tbl_users`.`id` DESC"; // TRZEBA ZROBIĆ SORTOWANIE OD NAJNOWSZYCH!
             $separator = ",";
             $resultX = mysqli_query($con2, $queryX);
-            // NIE DZIAŁA ! POPRAWIĆ !
+
               if ($csvLimit != 0 && $csvLimit) {
               if ($csvLimit == 1) {
                 echo "<h1>Skonwertowano $csvLimit rekord</h1>";
@@ -210,9 +210,7 @@
                 fputcsv($fp, $rowX, $separator);
                 }
                 fclose($fp);
-                }
-            
-          
+                }   
         ?>
     </section>
   <form method="post">

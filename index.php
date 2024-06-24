@@ -82,7 +82,7 @@
           </div>
 
           <div class="details">
-            <label for="myCheck" class="details"><a id="terms" href="regulamin.html" target="_blank">Czy akceptujesz regulamin?</a></label>
+            <label for="myCheck" class="details"><a id="terms" href="regulamin.html" target="_blank"><b>Czy akceptujesz regulamin?</b></a></label>
             <input type="checkbox" name="checkbox" id="myCheck" onclick="init()" onchange="document.getElementById('sbmt').disabled = !this.checked;" !checked />
           </div>
 
@@ -177,12 +177,12 @@
       
       if(isset($_POST['csvX']) && isset($_POST['chooseX'])) {
         $csvLimit = (int)$_POST['chooseX'];
-        $queryX = "SELECT * FROM tbl_users LIMIT $csvLimit"; // TRZEBA ZROBIĆ SORTOWANIE OD NAJNOWSZYCH!
+        $queryX = "SELECT * FROM tbl_users ORDER BY id DESC LIMIT $csvLimit";
         $separator = ",";
         $resultX = mysqli_query($con2, $queryX);
 
           if ($csvLimit != 0 && $csvLimit) {
-          if ($csvLimit == 1) { // ZROBIĆ ODSTĘP PO ECHO!
+          if ($csvLimit == 1) {
             echo "<h1>Skonwertowano $csvLimit rekord</h1>";
           } else if (($csvLimit > 1 && $csvLimit < 5) || ($csvLimit > 21 && $csvLimit < 25) || ($csvLimit > 31 && $csvLimit < 35) || ($csvLimit > 41 && $csvLimit < 45) || ($csvLimit > 51 && $csvLimit < 55) || ($csvLimit > 61 && $csvLimit < 65) || ($csvLimit > 71 && $csvLimit < 75) || ($csvLimit > 81 && $csvLimit < 85) || ($csvLimit > 91 && $csvLimit < 95)) {
             echo "<h1>Skonwertowano $csvLimit rekordy</h1>";

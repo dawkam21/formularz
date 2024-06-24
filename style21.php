@@ -90,6 +90,7 @@ h1 a:visited {
 
 #terms {
   color: black;
+  text-decoration: underline;  
 }
 
 #forms {
@@ -228,6 +229,8 @@ fieldset #csv {
 
 #button {
   display: flex;
+  justify-content: left;
+  padding-bottom: 20px;
 }
 
 #log {
