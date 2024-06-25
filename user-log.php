@@ -1,3 +1,33 @@
+<?php 
+
+@include 'config.php';
+
+session_start();
+
+if (isset($_POST['submit'])) {
+
+    $name = mysqli_real_escape_string($con, $_POST['name']);
+    $email = mysqli_real_escape_string($con, $_POST['email']);
+    $pass = md5($_POST['password']);
+    $cpass = md5($_POST['cpassword']);
+
+    $sql = "SELECT * FROM user_form WHERE email = '$email' && password = '$pass'";
+
+    $rsl = mysqli_query($con, $sql);
+
+    if (mysqli_num_rows($rsl) > 0) {
+
+        $row = mysqli_fetch_array($rsl);
+
+        $_SESSION['name'] = $row['name'];
+        header("location: user_page.php");
+    } else {
+        $error[] = 'Nieprawidłowy email lub hasło';
+    }
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -12,7 +42,15 @@
     <main>
     <section id="form">
                 <h1>Logowanie</h1>
-            <form name="frmContact" method="post" action="contact.php">
+                <?php
+
+                    if (isset($error)) {
+                        foreach($error as $error) {
+                            echo '<span class="error-msg">' . $error . '</span>';
+                        };
+                    };
+                ?>
+            <form name="userForm" method="post" action="user-page.php">
                 <div class="txt">
                 <label for="login"></label>
                     <input type="text" name="txtLogin" placeholder="Podaj login" required>
@@ -21,11 +59,6 @@
                 <div class="txt">
                 <label for="haslo"></label>
                     <input type="password" name="txtPassword" placeholder="Podaj hasło" required>
-                    <i class='bx bxs-lock-alt' ></i>
-                </div>
-                <div class="txt">
-                <label for="haslo2"></label>
-                    <input type="password" name="txtPassword2" placeholder="Powtórz hasło" required>
                     <i class='bx bxs-lock-alt' ></i>
                 </div>
 
@@ -40,7 +73,7 @@
                 </div>
 
                 <div class="register-link">
-                    <p>Nie masz konta? <a href="">Zarejestruj się</a></p>
+                    <p>Nie masz konta? <a href="user-register-form.php">Zarejestruj się</a></p>
                 </div>
 
                 <?php
@@ -48,6 +81,10 @@
                  ?>
             </form>
         </section>
+
+        <div class="change">
+            <a href="admin-page.php">Wróć do poziomu administratora</a>
+        </div>
     </main>
 
     <script src='logApp.js'></script>

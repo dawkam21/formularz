@@ -123,7 +123,7 @@
               if($con->connect_errno != 0) {
                 throw new Exception(mysqli_connect_errno());
               } else {
-                $sql1 = "SELECT id, fldFirstName, fldLastName, fldEmail, fldBirthDate, fldSex FROM tbl_users ORDER BY fldBirthDate ASC LIMIT 18";
+                $sql1 = "SELECT id, fldFirstName, fldLastName, fldEmail, fldBirthDate, fldSex FROM tbl_users ORDER BY fldBirthDate ASC LIMIT 15";
       
                 $result = $con->query($sql1);
       

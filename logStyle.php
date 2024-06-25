@@ -42,6 +42,8 @@ body {
   flex-direction: column;
   background: transparent;
   color: white;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
 }
 
 .txt {
@@ -59,6 +61,10 @@ body {
   padding: 10px;
 }
 
+.remember-forgot a {
+  color: crimson;
+}
+
 .txtBtn {
   display: flex;
   justify-content: center;
@@ -68,6 +74,10 @@ body {
 .register-link {
   display: flex;
   justify-content: center;
+}
+
+.register-link a {
+  color: crimson;
 }
 
 main h1 {
@@ -85,6 +95,13 @@ main h1 {
   cursor: pointer;
   font-size: 1em;
   font-weight: 600px;
+  color: crimson;
+  background: #fbd0d9;
+}
+
+.btnTxt:hover {
+  color: #fff;
+  background: crimson;
 }
 
 input[type="text"], input[type="password"] {
@@ -92,4 +109,31 @@ input[type="text"], input[type="password"] {
   height: 40px;
   margin: 0 10px;
   padding: 10px;
+}
+
+.admin-user {
+  display: flex;
+}
+
+.admin-user a {
+  color: white;
+  text-decoration: underline;
+}
+
+.admin {
+  margin: 40px;
+}
+
+.user {
+  margin: 40px;
+}
+
+.change {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.change a {
+  color: crimson;
 }

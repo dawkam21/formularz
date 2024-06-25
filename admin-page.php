@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +14,10 @@
         <div class="container">
 
             <div class="content">
-                <h3>Witaj, <span>ADMIN</span></h3>
+                <h3>Witaj, <span><?php echo $_SESSION['name']; ?></span></h3>
                 <h1>Jesteś na poziomie administratora</h1>
-                <a href="login_form.php" class="btn">Zaloguj się</a>
-                <a href="register_form.php" class="btn">Zarejestruj się</a>
+                <a href="admin-log.php" class="btn">Zaloguj się</a>
+                <a href="admin-register-form.php" class="btn">Zarejestruj się</a>
                 <a href="logout.php" class="btn">Wyloguj się</a>
             </div>
 

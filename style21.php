@@ -106,7 +106,7 @@ h1 a:visited {
   padding: 30px;
   border-radius: 10px;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   margin: 50px auto;
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.4);
   flex-direction: column;
