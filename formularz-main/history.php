@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["user_id"])) {
+    // Jeśli użytkownik nie jest zalogowany, przekieruj na stronę logowania
+    header("Location: admin-log.php");
+    exit;
+}
+
+if (!isset($_SESSION["user_id"]) || $_SESSION["role"] !== "admin") {
+  header("Location: user-log.php");
+  exit;
+}
+
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -14,9 +30,13 @@
 </head>
 
 <body>
+  <?php 
+    echo "<h1>" . ucfirst($_SESSION["username"]) . "</h1>";
+    echo "<p>To jest Twój panel zarządzania użytkownikami.</p>"
+  ?>
   <header>
     <section class="header">
-      <a href="history.php"><h1>Użytkownicy</h1></a>
+      <a href="history.php"><h1>Lista użytkowników</h1></a>
     </section>
   </header>
   <main>
@@ -29,6 +49,7 @@
           if ($con->connect_errno != 0) {
             throw new Exception(mysqli_connect_errno());
             } else {
+
               $sql1 = "SELECT id, fldFirstName, fldLastName, fldEmail, fldBirthDate, fldSex FROM tbl_users WHERE fldFirstName IS NOT NULL ORDER BY id DESC LIMIT 15";
               
               $result = $con->query($sql1);
@@ -57,7 +78,12 @@
                   echo "<td>" . $row["fldBirthDate"] . "</td>";
                   echo "<td>" . $row["fldSex"] . "</td>";
                   echo "<td class='blue'>" . "<a class='btnEdit' href='edit.php?id=$row[id]'>Edytuj" ."</td>";
-                  echo "<td class='red'>" . "<a class='btnDelete' href='delete.php?id=$row[id]'>Usuń" . "</td>";
+                  echo "<td class='red'>
+                          <a class='btnDelete' href='delete.php?id=" . $row["id"] . "' 
+                          onclick='return confirm(\"Czy na pewno chcesz usunąć tego użytkownika?\");'>
+                            Usuń
+                          </a>
+                        </td>";
                   echo "</tr>";
                   }
                   
@@ -71,17 +97,13 @@
           }
         ?>
       </div>
-      <!-- <div class="log">
-          <h3><a href="log.php" target="_blank" rel="noopener noreferrer">Zaloguj się jako użytkownik</a></h3>
 
-      </div> -->
     </section>
                 <section id="button">
                   <?php
       
       $con2 = new mysqli('localhost', 'root', '', 'db_contact');
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // $csvX = htmlspecialchars((int)$_POST['chooseX']);
           if(isset($_POST['csvAll'])) {
         echo "<script>
         alert('Skonwertowano do pliku humans.csv');
@@ -137,6 +159,7 @@
         <input type="submit" id="csvX" name="csvX" value="Konwertuj X">
     </fieldset>
   </form>
+  <h1 style='color: #fff;'><a style='color: #fff;' href="admin-logout.php">Wyloguj</a></h1>
     </main>
     <script src="app.js"></script>
 </body>
